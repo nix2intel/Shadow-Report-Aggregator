@@ -1,7 +1,8 @@
 import pandas as pd
 import datetime
 import pdfkit as pdf
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
 import os
 
 from shadow_report_api import create_message_with_attachment
@@ -9,8 +10,8 @@ from shadow_report_api import send_message
 from shadow_report_config import get_db_config
 from shadow_report_config import get_emails
 
-path_wkthtmlopdf = "/usr/local/bin/wkhtmltopdf"
-config = pdf.configuration(wkhtmltopdf=path_wkthtmlopdf)
+path_wkthtmltopdf = "/usr/local/bin/wkhtmltopdf"
+config = pdf.configuration(wkhtmltopdf=path_wkthtmltopdf)
 emails = get_emails()
 sendFrom = emails[0]
 sendTo = emails[1]

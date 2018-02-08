@@ -16,7 +16,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import email.encoders
 
-shadowdir = os.getenv("HOME") + "/Documents/Shadowdir/"
+from shadow_report_config import get_directories
+
+dirs = get_directories()
+reports_dir = dirs[0]
 
 try:
     # noinspection PyUnresolvedReferences
@@ -144,7 +147,7 @@ def get_reports():
                 data = att['data']
                 file_data = base64.urlsafe_b64decode(data.encode('UTF-8'))
                 print(part['filename'])
-                path = ''.join([shadowdir, part['filename']])
+                path = ''.join([reports_dir, part['filename']])
                 f = open(path, 'wb')
                 f.write(file_data)
                 f.close()

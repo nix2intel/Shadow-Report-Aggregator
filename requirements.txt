@@ -4,4 +4,3 @@ httplib2
 sqlalchemy
 pandas
 google-api-python-client
-

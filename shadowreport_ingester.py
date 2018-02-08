@@ -30,7 +30,7 @@ sendTo = emails[1]
 # set shadow report directory where .zip files are kept
 dirs = get_directories()
 reports_dir = dirs[0]
-# I mount google drive to be able to save the reports directly
+# This is a backup directory for keeping a copy of the csv files.
 backup_dir = dirs[1]
 
 
@@ -47,13 +47,13 @@ get_reports()
 # this section parses our shadowdir for the dropped zip files and extracts them and removes the zip file
 for item in os.listdir(reports_dir):
     if item.endswith(".zip"):
-        file_name = reports_dir + "/" + item
+        file_name = reports_dir + item
         zip_ref = zipfile.ZipFile(file_name)
         zip_ref.extractall(reports_dir)
         zip_ref.close()
         os.remove(file_name)
-# this section then goes to the shadowdir and gets the csv files and works with each database
-#  according to the name of the file. after insertion into the database it moves it to my google documents section.
+# this section then goes to the shadowdir and gets the csv files and works with each database table
+#  according to the name of the file. after insertion into the database it moves it to the backup directory.
 for item in os.listdir(reports_dir):
     if item.endswith(".csv"):
         file_name = reports_dir + "/" + item
