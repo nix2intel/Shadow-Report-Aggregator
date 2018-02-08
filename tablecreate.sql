@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201024)
-# Created: February 8, 2018 at 12:32:01 AM MST
+# Created: February 8, 2018 at 10:17:57 AM MST
 # Encoding: Unicode (UTF-8)
 #
 
@@ -137,7 +137,7 @@ CREATE TABLE `netbios` (
   `sic` varchar(128) DEFAULT NULL,
   `sector` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `ntp` (
@@ -182,7 +182,7 @@ CREATE TABLE `ntp` (
   `sic` varchar(128) DEFAULT NULL,
   `sector` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=415 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=416 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `openportmapper` (
@@ -263,7 +263,7 @@ CREATE TABLE `poodle` (
   `md5_fingerprint` varchar(128) DEFAULT NULL,
   `device_serial` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3830 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3844 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `sinkholehttpdrone` (
@@ -319,7 +319,7 @@ CREATE TABLE `snmp` (
   `sector` varchar(128) DEFAULT NULL,
   `version` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=363 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=364 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `telnet` (
@@ -338,7 +338,7 @@ CREATE TABLE `telnet` (
   `sic` varchar(128) DEFAULT NULL,
   `banner` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=406 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=408 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `tftp` (
@@ -362,7 +362,7 @@ CREATE TABLE `tftp` (
   `size` varchar(128) DEFAULT NULL,
   `contacted` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=238 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `vnc` (
@@ -379,11 +379,8 @@ CREATE TABLE `vnc` (
   `sic` varchar(128) DEFAULT NULL,
   `product` varchar(128) DEFAULT NULL,
   `banner` varchar(128) DEFAULT NULL,
-  `contacted` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `contacted` (`contacted`),
-  CONSTRAINT `contacted` FOREIGN KEY (`contacted`) REFERENCES `contacted` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
 
 
@@ -394,7 +391,7 @@ SET FOREIGN_KEY_CHECKS = @PREVIOUS_FOREIGN_KEY_CHECKS;
 DROP VIEW IF EXISTS `vulnerabilities`;
 
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `vulnerabilities` AS select `netbios`.`timestamp` AS `timestamp`,`netbios`.`ip` AS `ip`,`netbios`.`port` AS `port`,`netbios`.`hostname` AS `hostname`,'netbios' AS `type` from `netbios` where ((cast(`netbios`.`timestamp` as date) = (curdate() - interval 1 day)) and (`netbios`.`ip` like '192.%')) union select `ntp`.`timestamp` AS `timestamp`,`ntp`.`ip` AS `ip`,`ntp`.`port` AS `port`,`ntp`.`hostname` AS `hostname`,'ntp' AS `type` from `ntp` where ((cast(`ntp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`ntp`.`ip` like '192.%')) union select `openportmapper`.`timestamp` AS `timestamp`,`openportmapper`.`ip` AS `ip`,`openportmapper`.`port` AS `port`,`openportmapper`.`hostname` AS `hostname`,'openportmapper' AS `type` from `openportmapper` where ((cast(`openportmapper`.`timestamp` as date) = (curdate() - interval 1 day)) and (`openportmapper`.`ip` like '192.%')) union select `poodle`.`timestamp` AS `timestamp`,`poodle`.`ip` AS `ip`,`poodle`.`port` AS `port`,`poodle`.`hostname` AS `hostname`,'poodle' AS `type` from `poodle` where ((cast(`poodle`.`timestamp` as date) = (curdate() - interval 1 day)) and (`poodle`.`ip` like '192.%')) union select `snmp`.`timestamp` AS `timestamp`,`snmp`.`ip` AS `ip`,`snmp`.`port` AS `port`,`snmp`.`hostname` AS `hostname`,'snmp' AS `type` from `snmp` where ((cast(`snmp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`snmp`.`ip` like '192.%')) union select `telnet`.`timestamp` AS `timestamp`,`telnet`.`ip` AS `ip`,`telnet`.`port` AS `port`,`telnet`.`hostname` AS `hostname`,'telnet' AS `type` from `telnet` where ((cast(`telnet`.`timestamp` as date) = (curdate() - interval 1 day)) and (`telnet`.`ip` like '192.%')) union select `tftp`.`timestamp` AS `timestamp`,`tftp`.`ip` AS `ip`,`tftp`.`port` AS `port`,`tftp`.`hostname` AS `hostname`,'tftp' AS `type` from `tftp` where ((cast(`tftp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`tftp`.`ip` like '192.%')) union select `vnc`.`timestamp` AS `timestamp`,`vnc`.`ip` AS `ip`,`vnc`.`port` AS `port`,`vnc`.`hostname` AS `hostname`,'vnc' AS `type` from `vnc` where ((cast(`vnc`.`timestamp` as date) = (curdate() - interval 1 day)) and (`vnc`.`ip` like '192.%')) union select `sinkholehttpdrone`.`timestamp` AS `timestamp`,`sinkholehttpdrone`.`ip` AS `ip`,`sinkholehttpdrone`.`src_port` AS `port`,`sinkholehttpdrone`.`hostname` AS `hostname`,'sinkholehttpdrone' AS `type` from `sinkholehttpdrone` where ((cast(`sinkholehttpdrone`.`timestamp` as date) = (curdate() - interval 1 day)) and (`sinkholehttpdrone`.`ip` like '192.%')) union select `ciscosmartinstall`.`timestamp` AS `timestamp`,`ciscosmartinstall`.`ip` AS `ip`,`ciscosmartinstall`.`port` AS `port`,`ciscosmartinstall`.`hostname` AS `hostname`,'cisco_install' AS `type` from `ciscosmartinstall` where ((cast(`ciscosmartinstall`.`timestamp` as date) = (curdate() - interval 1 day)) and (`ciscosmartinstall`.`ip` like '192.%')) union select `blacklist`.`timestamp` AS `timestamp`,`blacklist`.`ip` AS `ip`,'NA' AS `port`,`blacklist`.`hostname` AS `hostname`,'blacklist' AS `type` from `blacklist` where ((cast(`blacklist`.`timestamp` as date) = (curdate() - interval 1 day)) and (`blacklist`.`ip` like '192.%'));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `vulnerabilities` AS select `netbios`.`timestamp` AS `timestamp`,`netbios`.`ip` AS `ip`,`netbios`.`port` AS `port`,`netbios`.`hostname` AS `hostname`,'netbios' AS `type` from `netbios` where ((cast(`netbios`.`timestamp` as date) = (curdate() - interval 1 day)) and (`netbios`.`ip` like '128.%')) union select `ntp`.`timestamp` AS `timestamp`,`ntp`.`ip` AS `ip`,`ntp`.`port` AS `port`,`ntp`.`hostname` AS `hostname`,'ntp' AS `type` from `ntp` where ((cast(`ntp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`ntp`.`ip` like '128.%')) union select `openportmapper`.`timestamp` AS `timestamp`,`openportmapper`.`ip` AS `ip`,`openportmapper`.`port` AS `port`,`openportmapper`.`hostname` AS `hostname`,'openportmapper' AS `type` from `openportmapper` where ((cast(`openportmapper`.`timestamp` as date) = (curdate() - interval 1 day)) and (`openportmapper`.`ip` like '128.%')) union select `poodle`.`timestamp` AS `timestamp`,`poodle`.`ip` AS `ip`,`poodle`.`port` AS `port`,`poodle`.`hostname` AS `hostname`,'poodle' AS `type` from `poodle` where ((cast(`poodle`.`timestamp` as date) = (curdate() - interval 1 day)) and (`poodle`.`ip` like '128.%')) union select `snmp`.`timestamp` AS `timestamp`,`snmp`.`ip` AS `ip`,`snmp`.`port` AS `port`,`snmp`.`hostname` AS `hostname`,'snmp' AS `type` from `snmp` where ((cast(`snmp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`snmp`.`ip` like '128.%')) union select `telnet`.`timestamp` AS `timestamp`,`telnet`.`ip` AS `ip`,`telnet`.`port` AS `port`,`telnet`.`hostname` AS `hostname`,'telnet' AS `type` from `telnet` where ((cast(`telnet`.`timestamp` as date) = (curdate() - interval 1 day)) and (`telnet`.`ip` like '128.%')) union select `tftp`.`timestamp` AS `timestamp`,`tftp`.`ip` AS `ip`,`tftp`.`port` AS `port`,`tftp`.`hostname` AS `hostname`,'tftp' AS `type` from `tftp` where ((cast(`tftp`.`timestamp` as date) = (curdate() - interval 1 day)) and (`tftp`.`ip` like '128.%')) union select `vnc`.`timestamp` AS `timestamp`,`vnc`.`ip` AS `ip`,`vnc`.`port` AS `port`,`vnc`.`hostname` AS `hostname`,'vnc' AS `type` from `vnc` where ((cast(`vnc`.`timestamp` as date) = (curdate() - interval 1 day)) and (`vnc`.`ip` like '128.%')) union select `sinkholehttpdrone`.`timestamp` AS `timestamp`,`sinkholehttpdrone`.`ip` AS `ip`,`sinkholehttpdrone`.`src_port` AS `port`,`sinkholehttpdrone`.`hostname` AS `hostname`,'sinkholehttpdrone' AS `type` from `sinkholehttpdrone` where ((cast(`sinkholehttpdrone`.`timestamp` as date) = (curdate() - interval 1 day)) and (`sinkholehttpdrone`.`ip` like '128.%')) union select `ciscosmartinstall`.`timestamp` AS `timestamp`,`ciscosmartinstall`.`ip` AS `ip`,`ciscosmartinstall`.`port` AS `port`,`ciscosmartinstall`.`hostname` AS `hostname`,'cisco_install' AS `type` from `ciscosmartinstall` where ((cast(`ciscosmartinstall`.`timestamp` as date) = (curdate() - interval 1 day)) and (`ciscosmartinstall`.`ip` like '128.%')) union select `blacklist`.`timestamp` AS `timestamp`,`blacklist`.`ip` AS `ip`,'NA' AS `port`,`blacklist`.`hostname` AS `hostname`,'blacklist' AS `type` from `blacklist` where ((cast(`blacklist`.`timestamp` as date) = (curdate() - interval 1 day)) and (`blacklist`.`ip` like '128.%'));
 
 
 
