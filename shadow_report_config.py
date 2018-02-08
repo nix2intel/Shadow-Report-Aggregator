@@ -18,12 +18,12 @@ def create_creds():
     config.add_section('Database')
     config.set('Database', 'username', username)
     config.set('Database', 'password', password)
-    config.set('Database', 'URI', uri)
+    config.set('Database', 'uri', uri)
     config.set('Database', 'port', port)
     config.set('Database', 'database', database)
     config.add_section('Email')
-    config.set('Email', 'sendFrom', send_from)
-    config.set('Email', 'sendTo', send_to)
+    config.set('Email', 'send_from', send_from)
+    config.set('Email', 'send_to', send_to)
     config.add_section('Directory')
     config.set('Directory', 'reports_dir',reports_dir )
     config.set('Directory', 'backup_dir', backup_dir)
@@ -41,7 +41,7 @@ def get_db_config():
             config.read(homedirectory + "/.config/shadowReports.ini")
             username = config.get('Database', 'username')
             password = config.get('Database', 'password')
-            uri = config.get('Database', 'URI')
+            uri = config.get('Database', 'uri')
             port = config.get('Database', 'port')
             database = config.get('Database', 'Database')
             return username, password, uri, port, database
@@ -58,8 +58,8 @@ def get_db_config():
 def get_emails():
     config = ConfigParser()
     config.read(homedirectory + "/.config/shadowReports.ini")
-    send_from = config.get('Email', 'sendFrom')
-    send_to = config.get('Email', 'sendTo')
+    send_from = config.get('Email', 'send_from')
+    send_to = config.get('Email', 'send_to')
     return send_from, send_to
 
 def get_directories():
