@@ -87,9 +87,15 @@ def create_message_with_attachment(sender, to, subject, message_text, file):
         content_type = 'application/octet-stream'
     main_type, sub_type = content_type.split('/', 1)
     if main_type == 'text':
-        fp = open(file, 'rb')
-        msg = MIMEText(fp.read(), _subtype=sub_type)
-        fp.close()
+        if sub_type == 'csv':
+            fp = open(file, 'rb')
+            msg = MIMEBase(main_type, sub_type)
+            msg.set_payload(fp.read())
+            fp.close()
+        else:
+            fp = open(file, 'rb')
+            msg = MIMEText(fp.read(), _subtype=sub_type)
+            fp.close()
     elif main_type == 'image':
         fp = open(file, 'rb')
         msg = MIMEImage(fp.read(), _subtype=sub_type)
