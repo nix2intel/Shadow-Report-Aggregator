@@ -1,5 +1,3 @@
-jinja2
-pdfkit
 httplib2
 sqlalchemy
 pandas
