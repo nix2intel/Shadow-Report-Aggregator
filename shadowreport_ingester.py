@@ -72,6 +72,11 @@ for item in os.listdir(reports_dir):
             document = file_name
             insert_database(document, tablename)
             shutil.move(file_name, backup_dir + item)
+        elif 'freak' in file_name:
+            tablename = 'freak'
+            document = file_name
+            insert_database(document,tablename)
+            shutil.move(file_name,backup_dir + item)
         elif 'telnet' in file_name:
             tablename = 'telnet'
             document = file_name
