@@ -132,6 +132,11 @@ for item in os.listdir(reports_dir):
             document = file_name
             insert_database(document, tablename)
             shutil.move(file_name, backup_dir + item)
+        elif 'mdns' in file_name:
+            tablename = 'mdns'
+            document = file_name
+            insert_database(document, tablename)
+            shutil.move(file_name, backup_dir + item)
         else:
             message = create_message(sendFrom, sendTo, os.path.basename(file_name) + " has no entry",
                                      "File " + os.path.basename(
