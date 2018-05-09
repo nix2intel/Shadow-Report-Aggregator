@@ -1,3 +1,6 @@
+[![Updates](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/shield.svg)](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/)
+[![Python 3](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/python-3-shield.svg)](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/)
+
 # Shadow-Report-Aggregator
 A python project to aggregate shadowserver reports and store them into a server and send out a daily report of their aggregations.
 
