@@ -137,6 +137,16 @@ for item in os.listdir(reports_dir):
             document = file_name
             insert_database(document, tablename)
             shutil.move(file_name, backup_dir + item)
+        elif 'rdp' in file_name:
+            tablename = 'rdp'
+            document = file_name
+            insert_database(document, tablename)
+            shutil.move(file_name, backup_dir + item)
+        elif 'http' in file_name:
+            tablename = 'http'
+            document = file_name
+            insert_database(document, tablename)
+            shutil.move(file_name, backup_dir + item)
         else:
             message = create_message(sendFrom, sendTo, os.path.basename(file_name) + " has no entry",
                                      "File " + os.path.basename(
