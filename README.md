@@ -13,7 +13,7 @@ pip install -r /path/to/requirements.txt
 
 ## Configuration
 
-The first time the script is run it will walk you through the creation of a configuration file if it does not exist. It creates a configuration file at ~/.config of the user it is run as entitiled shadowreports.ini. You can manually create the file as follows 
+The first time the script is run it will walk you through the creation of a configuration file if it does not exist. It creates a configuration file at ~/.config of the user it is run as entititled shadowreports.ini. You can manually create the file as follows 
 ```
 [Database]
 username = 
