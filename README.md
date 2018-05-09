@@ -1,3 +1,6 @@
+[![Updates](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/shield.svg)](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/)
+[![Python 3](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/python-3-shield.svg)](https://pyup.io/repos/github/5A4B48/Shadow-Report-Aggregator/)
+
 # Shadow-Report-Aggregator
 A python project to aggregate shadowserver reports and store them into a server and send out a daily report of their aggregations.
 
@@ -10,7 +13,7 @@ pip install -r /path/to/requirements.txt
 
 ## Configuration
 
-The first time the script is run it will walk you through the creation of a configuration file if it does not exist. It creates a configuration file at ~/.config of the user it is run as entitiled shadowreports.ini. You can manually create the file as follows 
+The first time the script is run it will walk you through the creation of a configuration file if it does not exist. It creates a configuration file at ~/.config of the user it is run as entititled shadowreports.ini. You can manually create the file as follows 
 ```
 [Database]
 username = 
