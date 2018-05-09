@@ -382,6 +382,65 @@ CREATE TABLE `vnc` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `rdp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` timestamp NULL DEFAULT NULL,
+  `ip` varchar(128) DEFAULT NULL,
+  `port` varchar(128) DEFAULT NULL,
+  `hostname` varchar(128) DEFAULT NULL,
+  `tag` varchar(128) DEFAULT NULL,
+  `handshake` varchar(128) DEFAULT NULL,
+  `asn` varchar(128) DEFAULT NULL,
+  `geo` varchar(128) DEFAULT NULL,
+  `region` varchar(128) DEFAULT NULL,
+  `city` varchar(128) DEFAULT NULL,
+  `rdp_protocol` varchar(128) DEFAULT NULL,
+  `cert_length` varchar(128) DEFAULT NULL,
+  `subject_common_name` varchar(128) DEFAULT NULL,
+  `issuer_common_name` varchar(128) DEFAULT NULL,
+  `cert_issue_date` varchar(128) DEFAULT NULL,
+  `cert_expiration_date` varchar(128) DEFAULT NULL,
+  `sha1_fingerprint` varchar(512) DEFAULT NULL,
+  `cert_serial_number` varchar(128) DEFAULT NULL,
+  `ssl_version` varchar(128) DEFAULT NULL,
+  `signature_algorithm` varchar(128) DEFAULT NULL,
+  `key_algorithm` varchar(128) DEFAULT NULL,
+  `sha256_fingerprint` varchar(512) DEFAULT NULL,
+  `sha512_fingerprint` varchar(1024) DEFAULT NULL,
+  `md5_fingerprint` varchar(256) DEFAULT NULL,
+  `naics` varchar(128) DEFAULT NULL,
+  `sic` varchar(128) DEFAULT NULL,
+  `sector` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `http` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` varchar(128) DEFAULT NULL,
+  `ip` varchar(128) DEFAULT NULL,
+  `protocol` varchar(128) DEFAULT NULL,
+  `port` varchar(128) DEFAULT NULL,
+  `hostname` varchar(128) DEFAULT NULL,
+  `tag` varchar(128) DEFAULT NULL,
+  `asn` varchar(128) DEFAULT NULL,
+  `geo` varchar(128) DEFAULT NULL,
+  `region` varchar(128) DEFAULT NULL,
+  `city` varchar(128) DEFAULT NULL,
+  `naics` varchar(128) DEFAULT NULL,
+  `sic` varchar(128) DEFAULT NULL,
+  `http` varchar(128) DEFAULT NULL,
+  `http_code` varchar(128) DEFAULT NULL,
+  `http_reason` varchar(128) DEFAULT NULL,
+  `content_type` varchar(128) DEFAULT NULL,
+  `conenction` varchar(128) DEFAULT NULL,
+  `www_authenticate` varchar(128) DEFAULT NULL,
+  `set_cookie` varchar(128) DEFAULT NULL,
+  `server` varchar(128) DEFAULT NULL,
+  `content_length` varchar(128) DEFAULT NULL,
+  `transfer_encoding` varchar(128) DEFAULT NULL,
+  `http_date` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 
 
