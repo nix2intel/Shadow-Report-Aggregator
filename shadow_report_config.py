@@ -3,6 +3,10 @@ import os
 
 homedirectory = os.environ['HOME']
 
+try:
+    input = raw_input
+except:
+    pass
 
 def create_creds():
     username = input("What is the database username: ")
